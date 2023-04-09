@@ -1,0 +1,18 @@
+{
+  "name": "ytldr",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "openai": "^3.2.1",
+    "path": "^0.12.7",
+    "youtube-transcript": "^1.0.5"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "engines": {
+    "node": "16.14.0",
+    "npm": "8.3.1"
+  }
+}
