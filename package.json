@@ -9,7 +9,7 @@
     "youtube-transcript": "^1.0.5"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "engines": {
     "node": "16.14.0",

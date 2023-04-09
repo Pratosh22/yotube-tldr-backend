@@ -10,6 +10,8 @@ app.use(cors());
 dotenv.config();
 const port=process.env.PORT;
 
+
+
 const getTranscript = async (videoId) => {
   let transcript = "";
   const fetchtranscript = await YoutubeTranscript.fetchTranscript(videoId);
