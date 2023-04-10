@@ -4,14 +4,10 @@ const app = require("express")();
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const cors = require("cors");
-app.use(
-  cors({
-    origin: "https://ytldr.vercel.app",
-  })
-);
+
 
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://ytldr.vercel.app");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header(
     "Access-Control-Allow-Headers",
@@ -20,7 +16,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.options("*", cors());
 
 app.use(bodyParser.json());
 dotenv.config();
