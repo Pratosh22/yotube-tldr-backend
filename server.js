@@ -49,6 +49,11 @@ app.post("/explain", async (req, res) => {
   console.log(response.data.choices[0].text);
 });
 
+app.get("/", (req, res) => {
+  res.send("Youtube Summarizer");
+});
+
+
 app.post("/summarize", async (req, res) => {
   const { message } = req.body;
   console.log(message);
