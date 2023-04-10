@@ -51,11 +51,6 @@ app.post("/explain", async (req, res) => {
     temperature: 0.2,
   });
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
   res.json({
     message: response.data.choices[0].text,
   });
@@ -77,11 +72,6 @@ app.post("/summarize", async (req, res) => {
     temperature: 0.2,
   });
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
   res.json({
     message: response.data.choices[0].text,
   });
