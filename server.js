@@ -42,7 +42,6 @@ const openai = new OpenAIApi(config);
 
 app.post("/explain", async (req, res) => {
   const { message } = req.body;
-  console.log(message);
   const transcript = await getTranscript(message);
   const response = await openai.createCompletion({
     model: "text-davinci-003",
@@ -54,16 +53,16 @@ app.post("/explain", async (req, res) => {
   res.json({
     message: response.data.choices[0].text,
   });
-  console.log(response.data.choices[0].text);
 });
 
 app.get("/", (req, res) => {
-  res.send("Youtube Summarizer");
+ res.json({
+    message: "Youtbe video summarizer",
+ });
 });
 
 app.post("/summarize", async (req, res) => {
   const { message } = req.body;
-  console.log(message);
   const transcript = await getTranscript(message);
   const response = await openai.createCompletion({
     model: "text-davinci-003",
@@ -75,7 +74,6 @@ app.post("/summarize", async (req, res) => {
   res.json({
     message: response.data.choices[0].text,
   });
-  console.log(response.data.choices[0].text);
 });
 
 app.listen(port, () => {
