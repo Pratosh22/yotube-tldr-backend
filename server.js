@@ -4,9 +4,14 @@ const app = require("express")();
 const bodyParser = require("body-parser");
 const dotenv=require('dotenv');
 const cors = require("cors");
+app.use(cors({
+  origin: "https://ytldr.vercel.app",
+}
+))
+
+app.options('*', cors())
 
 app.use(bodyParser.json());
-app.use(cors());
 dotenv.config();
 const port=process.env.PORT;
 
