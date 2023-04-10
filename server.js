@@ -2,20 +2,29 @@ const { Configuration, OpenAIApi } = require("openai");
 const { YoutubeTranscript } = require("youtube-transcript");
 const app = require("express")();
 const bodyParser = require("body-parser");
-const dotenv=require('dotenv');
+const dotenv = require("dotenv");
 const cors = require("cors");
-app.use(cors({
-  origin: "https://ytldr.vercel.app",
-}
-))
+app.use(
+  cors({
+    origin: "https://ytldr.vercel.app",
+  })
+);
 
-app.options('*', cors())
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://ytldr.vercel.app");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
+app.options("*", cors());
 
 app.use(bodyParser.json());
 dotenv.config();
-const port=process.env.PORT;
-
-
+const port = process.env.PORT;
 
 const getTranscript = async (videoId) => {
   let transcript = "";
@@ -57,7 +66,6 @@ app.post("/explain", async (req, res) => {
 app.get("/", (req, res) => {
   res.send("Youtube Summarizer");
 });
-
 
 app.post("/summarize", async (req, res) => {
   const { message } = req.body;
