@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
-
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
@@ -15,7 +14,6 @@ app.use(function (req, res, next) {
   );
   next();
 });
-
 
 app.use(bodyParser.json());
 dotenv.config();
@@ -52,6 +50,12 @@ app.post("/explain", async (req, res) => {
     max_tokens: 3096,
     temperature: 0.2,
   });
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   res.json({
     message: response.data.choices[0].text,
   });
@@ -72,6 +76,12 @@ app.post("/summarize", async (req, res) => {
     max_tokens: 3096,
     temperature: 0.2,
   });
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   res.json({
     message: response.data.choices[0].text,
   });
